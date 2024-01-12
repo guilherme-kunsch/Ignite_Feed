@@ -91,7 +91,7 @@
   margin-top: 1rem;
 }
 
-.commentForm > button {
+.commentForm button[type=submit] {
   padding: 1rem 1.5rem;
   margin-top: 1rem;
   border-radius: 8px;
@@ -102,9 +102,19 @@
   cursor: pointer;
   align-items: center;
   border: none;
+  transition: background-color 0.1s;
+}
+
+.commentForm footer {
+  visibility: hidden;
+  max-width: 0;
+}
+
+.commentForm:focus-within footer {
+  visibility: visible;
+  max-width: none;
 }
 
 .commentForm > button:hover {
   background-color: var(--green-300);
-  transition: color 0.1s background-color 0.1s;
 }
