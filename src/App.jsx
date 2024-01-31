@@ -44,9 +44,9 @@ export function App() {
         <Sidebar />
         <main>
           {posts.map(post => {
-            console.log(post.publishAt)
             return (
               <Post 
+                key={post.id}
                 author={post.author}
                 content={post.content}
                 publishedAt={post.publishedAt}
