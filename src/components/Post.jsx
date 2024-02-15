@@ -3,10 +3,17 @@ import ptBR from "date-fns/locale/pt-BR";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Post({ author, publishedAt, content }) {
-  const [comments, setComment] = useState(["Post bacanas"]);
+  const [comments, setComment] = useState(() => {
+    const storedComments = localStorage.getItem("comments");
+    return storedComments ? JSON.parse(storedComments) : ["Post bacanas"];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
 
   const publishedDateFormatted = format(
     publishedAt,
